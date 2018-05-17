@@ -5,23 +5,27 @@
 import aframe from 'aframe';
 
 import componentsInit from './components';
-import scene from './scene';
-import createExpandingPoint from './expandingPoint';
+// import scene from './scene';
+// import createExpandingPoint from './expandingPoint';
+import App from './App';
 
 componentsInit();
 
-const root = document.getElementById("root");
+App.render('#root');
 
-root.appendChild(scene);
 
-const pointData = [];
-for (let i = 0; i < 100; i++) {
-  pointData.push([Math.random(), Math.random(), Math.random()]);
-}
+// const root = document.getElementById("root");
 
-const multiplier = 20;
-const offset = [-multiplier / 2, 0, -multiplier / 2];
-pointData.map((point, i) => {
-  const pointEl = createExpandingPoint(point.map((x, i) => x * multiplier + offset[i]));
-  scene.appendChild(pointEl);
-});
+// root.appendChild(scene);
+
+// const pointData = [];
+// for (let i = 0; i < 100; i++) {
+//   pointData.push([Math.random(), Math.random(), Math.random()]);
+// }
+
+// const multiplier = 20;
+// const offset = [-multiplier / 2, 0, -multiplier / 2];
+// pointData.map((point, i) => {
+//   const pointEl = createExpandingPoint(point.map((x, i) => x * multiplier + offset[i]));
+//   scene.appendChild(pointEl);
+// });

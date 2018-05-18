@@ -15,6 +15,16 @@ export default () => {
     }
   });
 
+  // aframe.registerComponent('pop-in', {
+  //   init: function () {
+  //     this.el.addEventListener('click', function (e) {
+  //       lastIndex = (lastIndex + 1) % COLORS.length;
+  //       this.setAttribute('material', 'color', COLORS[lastIndex]);
+  //       console.log('I was clicked at: ', e.detail.intersection.point);
+  //     });
+  //   }
+  // });
+
   aframe.registerComponent('expand-on-hover', {
     init: function () {
       this.children = this.el.children;

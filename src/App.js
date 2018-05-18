@@ -1,16 +1,44 @@
 import Aviya from 'aviya'
 
-import Box from './Box'
+import Box, { createBoxEl } from './Box'
 
 class App extends Aviya{
+
   constructor(){
     super();
     this.addDependency(Box);
+    this.loadData();
   };
+
+  loadData() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const pointData = [];
+        for (let i = 0; i < 100; i++) {
+          pointData.push([Math.random(), Math.random(), Math.random()]);
+        }
+        return resolve(pointData);
+      }, 3000);
+    }).then(this.handleReceivedData);
+  }
+
+  handleReceivedData(data) {
+    const scene = document.getElementById('scene');
+    const multiplier = 20;
+    const offset = [-multiplier / 2, 0, -multiplier / 2];
+    // data.map((point, i) => {
+    //   // const pointEl = createExpandingPoint(point.map((x, i) => x * multiplier + offset[i]));
+    //   const scene = document.getElementById('scene');
+    //   const box = createBoxEl();
+    //   box.setAttribute('position', point.map((x, i) => x * multiplier + offset[i]).join(' '))
+    //   scene.appendChild(box);
+    // });
+  }
 
   html(){
     return(`
       <a-scene
+        id='scene'
         background="color: blue">
         <a-camera
           look-controls="pointerLockEnabled: true"
@@ -30,6 +58,7 @@ class App extends Aviya{
           </a-entity>
         </a-camera>
         <a-plane
+          id='plane'
           height="100" width="100" rotation="-90 0 0" />
         <Box/>
       </a-scene>
